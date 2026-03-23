@@ -21,7 +21,7 @@ export default function AdditionalInfo({ coords }: Props) {
   return (
     <Card
       title="Additional Weather Info"
-      childrenClassName="flex flex-col gap-8"
+      childrenClassName="grid grid-cols-1 md:grid-cols-2 gap-8"
     >
       {rows.map(({ label, value, Icon }) => (
         <div className="flex justify-between" key={value}>
@@ -29,7 +29,7 @@ export default function AdditionalInfo({ coords }: Props) {
             <span className="text-gray-500 flex items-center gap-2">
               {label}
             </span>
-            <Icon className="size-8 invert" />
+            <Icon className="size-8 " />
           </div>
           <span>
             <FormatComponent value={value} number={data.current[value]} />
@@ -52,7 +52,7 @@ function FormatComponent({ value, number }: { value: string; number: number }) {
     return (
       <UpArrow
         style={{ transform: `rotate(${number}deg)` }}
-        className="size-8 invert"
+        className="size-8 "
       />
     );
 
