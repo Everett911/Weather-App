@@ -24,7 +24,7 @@ export default function MapTypeDropdown({ mapType, setMapType }: Props) {
           {mapType.split("_new")[0]}
         </SelectValue>
       </SelectTrigger>
-      <SelectContent className=" z-1001">
+      <SelectContent className=" z-10000!">
         <SelectGroup>
           {types.map((layer) => (
             <SelectItem key={layer} value={layer} className="capitalize">

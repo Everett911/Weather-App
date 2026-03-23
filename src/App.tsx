@@ -5,7 +5,7 @@ import AdditionalInfo from "./components/cards/AdditionalInfo";
 import Map from "./components/Map";
 import { Suspense, useState } from "react";
 import type { Coords } from "./types";
-import LocationDropDown from "./components/dropdowns/LocationDropDown";
+
 import { useQuery } from "@tanstack/react-query";
 import { getGeocode } from "./api";
 import MapTypeDropdown from "./components/dropdowns/MapTypeDropdown";
@@ -18,6 +18,7 @@ import SidePanel from "./components/SidePanel";
 import Hamburger from "./assets/hamburger.svg?react";
 import MobileHeader from "./components/MobileHeader";
 import LightDarkToggle from "./components/LightDarkToggle";
+import LocationSearch from "./components/LocationSearch";
 
 function App() {
   const [coordinates, setCoords] = useState<Coords>({ lat: 40, lon: 55 });
@@ -43,19 +44,18 @@ function App() {
     <>
       <MobileHeader setIsSidePanelOpen={setIsSidePanelOpen} />
       <div className="flex flex-col gap-8 pt-4 p-8 xs:pt-8 lg:w-[calc(100dvw-var(--sidebar-width))] 2xl:h-screen 2xl:min-h-280">
-        <div className="flex flex-col xs:flex-row xs:gap-8">
+        <div className="flex flex-col xs:flex-row xs:gap-2 md:gap-12">
           <div className="flex flex-col md:flex-row gap-2 md:gap-4">
-            <h1 className="text-2xl font-semibold">Location:</h1>
-            <LocationDropDown location={location} setLocation={setLocation} />
+            <LocationSearch setLocation={setLocation} />
           </div>
-          <div className="flex flex-col md:flex-row gap-2 md:gap-4">
-            <h1 className="text-2xl font-semibold whitespace-nowrap">
-              Map Type:
+          <div className="flex flex-col md:flex-row gap-2 md:gap-4 relative z-10">
+            <h1 className="text-1xl font-semibold whitespace-nowrap pt-1 xs:hidden md:block">
+              Map Filter:
             </h1>
             <MapTypeDropdown mapType={mapType} setMapType={setMapType} />
           </div>
-          <div className="ml-auto flex gap-4 items-center">
-            <div className="hidden xs:block">
+          <div className="ml-auto flex gap-4 items-start ">
+            <div className="hidden xs:block  ">
               <LightDarkToggle />
             </div>
             <button
@@ -67,7 +67,7 @@ function App() {
           </div>
         </div>
         <div className="grid grid-cols-1 2xl:flex-1 2xl:min-h-0 md:grid-cols-2 2xl:grid-cols-4 2xl:grid-rows-4 gap-4 ">
-          <div className="relative h-120 2xl:h-auto col-span-1 md:col-span-2 2xl:col-span-4 2xl:row-span-2 order-1 ">
+          <div className="relative h-120 2xl:h-auto col-span-1 md:col-span-2 2xl:col-span-4 2xl:row-span-2 order-1 z-0">
             <Map coords={coords} onMapClick={onMapClick} mapType={mapType} />
             <MapLegend mapType={mapType} />
           </div>
