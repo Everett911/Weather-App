@@ -1,4 +1,4 @@
-import { AirPollutionSchema } from "./schemas/airpollutionSchema";
+import { AirPollutionSchema } from "./schemas/airPollutionSchema";
 import { GeocodeSchema } from "./schemas/geocodeSchema";
 import { weatherSchema } from "./schemas/weatherSchema";
 
