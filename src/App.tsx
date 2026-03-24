@@ -45,14 +45,15 @@ function App() {
       <MobileHeader setIsSidePanelOpen={setIsSidePanelOpen} />
       <div className="flex flex-col gap-8 pt-4 p-8 xs:pt-8 lg:w-[calc(100dvw-var(--sidebar-width))] 2xl:h-screen 2xl:min-h-280">
         <div className="flex flex-col xs:flex-row xs:gap-2 md:gap-12">
-          <div className="flex flex-col md:flex-row gap-2 md:gap-4">
-            <LocationSearch setLocation={setLocation} />
-          </div>
           <div className="flex flex-col md:flex-row gap-2 md:gap-4 relative z-10">
             <h1 className="text-1xl font-semibold whitespace-nowrap pt-1 xs:hidden md:block">
               Map Filter:
             </h1>
             <MapTypeDropdown mapType={mapType} setMapType={setMapType} />
+          </div>
+          <div className="flex flex-col md:flex-row gap-2 md:gap-4 ">
+            <div className="xs:hidden"> </div>
+            <LocationSearch setLocation={setLocation} />
           </div>
           <div className="ml-auto flex gap-4 items-start ">
             <div className="hidden xs:block  ">
