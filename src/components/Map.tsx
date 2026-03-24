@@ -4,6 +4,18 @@ import type { Coords } from "../types";
 import { useEffect } from "react";
 const API_KEY = import.meta.env.VITE_API_KEY;
 import { MaptilerLayer } from "@maptiler/leaflet-maptilersdk";
+import L from "leaflet";
+import icon from "leaflet/dist/images/marker-icon.png";
+import iconShadow from "leaflet/dist/images/marker-shadow.png";
+
+const DefaultIcon = L.icon({
+  iconUrl: icon,
+  shadowUrl: iconShadow,
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+});
+
+L.Marker.prototype.options.icon = DefaultIcon;
 
 type Props = {
   coords: Coords;
@@ -13,6 +25,7 @@ type Props = {
 
 export default function Map({ coords, onMapClick, mapType }: Props) {
   const { lat, lon } = coords;
+
   return (
     <MapContainer
       center={[lat, lon]}
